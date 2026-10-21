@@ -82,13 +82,6 @@
 
         default_layer {
             display-name = "QWERTY";
-
-            // --------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |  MUTE |  PP   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |  LALT |  RALT |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |               |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
-
             bindings = <
 &kp TAB                 &kp Q               &kp W          &kp E                          &kp R                       &kp T        &trans  &trans  &kp Y        &kp U                           &kp I                                   &kp O                 &kp P                  &lt 0 LEFT_BRACKET
 &kp LS(TAB)             &HRML LEFT_SHIFT A  &HRML LCTRL S  &HRML LEFT_ALT D               &HRML LEFT_COMMAND F        &kp G        &trans  &trans  &kp H        &HRMR LEFT_COMMAND J            &HRMR LEFT_ALT K                        &HRMR LEFT_CONTROL L  &HRMR LEFT_SHIFT SEMI  &kp SQT
@@ -99,13 +92,6 @@
 
         lower_layer {
             display-name = "NUMBER";
-
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5    |  LCTRL | RCTRL |  6  |  7  |  8  |  9  |  0  | BSPC |
-            // | CTRL | BT1 | BT2 | BT3 | BT4 | BT5   |  LALT  | RALT  | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT | BTCR| RGB | RST | BOOT| Unlock|        |       |     |     |     |     |     |      |
-            //                    | GUI |     | SPC   |        | ENT   |     | ALT |
-
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
@@ -149,7 +135,7 @@
             bindings = <
 &trans  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &kp LA(LC(D))               &kp LC(LA(UP_ARROW))   &kp LA(LC(DOWN_ARROW))  &kp LA(LC(G))                &trans  &bootloader
 &trans  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &kp LA(LC(LG(LEFT_ARROW)))  &kp LA(LC(LG(SPACE)))  &kp LC(LA(ENTER))       &kp LA(LC(LG(RIGHT_ARROW)))  &trans  &studio_unlock
-&trans  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &kp LA(LC(LEFT_ARROW))      &kp K_VOLUME_DOWN      &kp K_VOLUME_UP         &kp LA(LC(RIGHT_ARROW))      &trans  &trans
+&trans  &bt BT_CLR    &trans  &sys_reset    &bootloader   &studio_unlock                  &kp LA(LC(LEFT_ARROW))      &kp K_VOLUME_DOWN      &kp K_VOLUME_UP         &kp LA(LC(RIGHT_ARROW))      &trans  &trans
                                        &trans        &trans        &trans                          &trans                      &trans                 &trans
             >;
         };
