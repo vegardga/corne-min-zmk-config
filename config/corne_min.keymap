@@ -9,66 +9,149 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
-        keymap {
-                compatible = "zmk,keymap";
+    behaviors {
+        HRMShiftR: HRMShiftR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRMSHIFTR";
+            bindings = <&kp>, <&kp>;
 
-                default_layer {
-                            display-name = "Base";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-// | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-//                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
-                        bindings = <
-   &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-   &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-   &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                  &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
-                        >;
-                };
-                lower_layer {
-                        display-name = "Lower";
-// -----------------------------------------------------------------------------------------
-// |  bootloader |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-// | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &bootloader    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-   &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-   &kp LSHFT  &trans       &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                    &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
-                        >;
-                };
-
-                raise_layer {
-                        display-name = "Raise";
-// -----------------------------------------------------------------------------------------
-// |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | bootloader |
-// | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-                        bindings = <
-   &kp  TAB  &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp ASTRK &kp LPAR &kp RPAR &bootloader
-   &studio_unlock &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT  &kp RBKT &kp BSLH &kp GRAVE
-   &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC  &kp RBRC &kp PIPE &kp TILDE
-                             &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-                        >;
-                };
-
-                extra1 {
-                        display-name = "Extra-1";
-                        status = "reserved";
-                };
-
-                extra2 {
-                        display-name = "Extra-2";
-                        status = "reserved";
-                };
-
-                extra3 {
-                        display-name = "Extra-3";
-                        status = "reserved";
-                };
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-while-undecided;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
+            hold-trigger-on-release;
         };
+
+        HRMR: HRMR {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
+            hold-trigger-on-release;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>;
+        };
+
+        HRMShiftL: HRMShiftL {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRMSHIFTL";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-while-undecided;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45>;
+        };
+
+        HRML: HRML {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45>;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>;
+        };
+
+        HRMThumb: HRMThumb {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HRMTHUMB";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <7 8 9 10 11 12 13 21 22 23 24 25 26 27 34 35 36 37 38 39 34 0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33>;
+            flavor = "balanced";
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <125>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "QWERTY";
+
+            // --------------------------------------------------------------------------------
+            // |  TAB |  Q  |  W  |  E  |  R  |  T  |  MUTE |  PP   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+            // | CTRL |  A  |  S  |  D  |  F  |  G  |  LALT |  RALT |  H  |  J   |  K  |  L  |  ;  |  '   |
+            // | SHFT |  Z  |  X  |  C  |  V  |  B  |               |  N  |  M   |  ,  |  .  |  /  | ESC  |
+            //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
+
+            bindings = <
+&kp TAB                 &kp Q               &kp W          &kp E                          &kp R                       &kp T        &trans  &trans  &kp Y        &kp U                           &kp I                                   &kp O                 &kp P                  &lt 0 LEFT_BRACKET
+&kp LS(TAB)             &HRML LEFT_SHIFT A  &HRML LCTRL S  &HRML LEFT_ALT D               &HRML LEFT_COMMAND F        &kp G        &trans  &trans  &kp H        &HRMR LEFT_COMMAND J            &HRMR LEFT_ALT K                        &HRMR LEFT_CONTROL L  &HRMR LEFT_SHIFT SEMI  &kp SQT
+&HRML GLOBE LS(LA(N7))  &lt 3 Z             &kp X          &kp C                          &kp V                       &kp B                        &kp N        &kp M                           &kp COMMA                               &kp DOT               &lt 5 SLASH            &kp BACKSLASH
+                                                           &HRMThumb LEFT_CONTROL LS(N7)  &HRMThumb LEFT_COMMAND ESC  &lt 4 SPACE                  &lt 2 ENTER  &HRMThumb LEFT_SHIFT BACKSPACE  &HRMThumb LA(LC(LS(LEFT_GUI))) LS(DOT)
+            >;
+        };
+
+        lower_layer {
+            display-name = "NUMBER";
+
+            // -----------------------------------------------------------------------------------------
+            // |  TAB |  1  |  2  |  3  |  4  |  5    |  LCTRL | RCTRL |  6  |  7  |  8  |  9  |  0  | BSPC |
+            // | CTRL | BT1 | BT2 | BT3 | BT4 | BT5   |  LALT  | RALT  | LFT | DWN |  UP | RGT |     |      |
+            // | SHFT | BTCR| RGB | RST | BOOT| Unlock|        |       |     |     |     |     |     |      |
+            //                    | GUI |     | SPC   |        | ENT   |     | ALT |
+
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans                  &trans  &trans  &trans
+            >;
+        };
+
+        Layer_2 {
+            display-name = "Arrows";
+            bindings = <
+&trans  &trans      &trans      &kp C_BRIGHTNESS_DEC       &kp C_BRIGHTNESS_INC           &trans      &trans  &trans  &kp N0                  &kp LS(LA(N9))          &kp LS(LA(N8))        &kp LS(N4)               &kp K_MUTE     &trans
+&trans  &trans      &trans      &HRML LEFT_ALT LS(LG(N3))  &HRML LEFT_COMMAND LS(LG(N4))  &trans      &trans  &trans  &kp LEFT_ARROW          &kp DOWN_ARROW          &kp UP_ARROW          &kp RIGHT_ARROW          &kp LG(MINUS)  &trans
+&trans  &kp LG(N1)  &kp LG(N2)  &kp LG(N3)                 &kp LG(N4)                     &kp LG(N5)                  &kp LA(LG(LEFT_ARROW))  &kp LS(LA(DOWN_ARROW))  &kp LS(LA(UP_ARROW))  &kp LA(LG(RIGHT_ARROW))  &kp LG(SLASH)  &trans
+                                &trans                     &trans                         &trans                      &trans                  &trans                  &trans
+            >;
+        };
+
+        Layer_3 {
+            display-name = "SYMBOL";
+            bindings = <
+&bootloader     &trans  &kp PLUS    &kp LS(MINUS)  &kp LA(RIGHT_BRACKET)  &kp LS(RIGHT_BRACKET)  &trans  &trans  &kp NON_US_BACKSLASH  &kp LS(LA(N7))  &kp LA(N8)      &kp LA(N9)      &kp MINUS   &kp EQUAL
+&studio_unlock  &trans  &kp LS(N1)  &kp LS(N3)     &kp LS(N4)             &kp LS(N5)             &trans  &trans  &kp LS(N2)            &kp LS(N7)      &kp LS(N8)      &kp LS(N9)      &kp LS(N0)  &kp RIGHT_BRACKET
+&trans          &trans  &kp LS(N6)  &kp GRAVE      &kp LS(GRAVE)          &kp LS(COMMA)                          &kp LS(PERIOD)        &kp LA(N7)      &kp LA(LS(N8))  &kp LA(LS(N9))  &trans      &trans
+                                    &trans         &trans                 &trans                                 &trans                &trans          &trans
+            >;
+        };
+
+        Layer_4 {
+            display-name = "Number";
+            bindings = <
+&kp LG(LC(Q))  &kp F1               &kp F2                 &kp F3             &kp F4                 &kp F5      &trans  &trans  &kp F6             &kp F7                 &kp F8             &kp F9                 &kp F10              &kp F12
+&kp GRAVE      &HRML LEFT_SHIFT N1  &HRML LEFT_CONTROL N2  &HRML LEFT_ALT N3  &HRML LEFT_COMMAND N4  &kp N5      &trans  &trans  &kp N6             &HRMR LEFT_COMMAND N7  &HRMR LEFT_ALT N8  &HRMR LEFT_CONTROL N9  &HRMR LEFT_SHIFT N0  &kp MINUS
+&kp F11        &kp LS(N1)           &kp LS(N2)             &kp LS(N3)         &kp LS(N4)             &kp LS(N5)                  &kp LS(N6)         &kp LS(N7)             &kp LS(N8)         &kp LS(N9)             &kp LS(N0)           &kp LS(MINUS)
+                                                           &trans             &trans                 &trans                      &kp LS(LG(SPACE))  &trans                 &trans
+            >;
+        };
+
+        Layer_5 {
+            display-name = "Window";
+            bindings = <
+&trans  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &kp LA(LC(D))               &kp LC(LA(UP_ARROW))   &kp LA(LC(DOWN_ARROW))  &kp LA(LC(G))                &trans  &bootloader
+&trans  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &kp LA(LC(LG(LEFT_ARROW)))  &kp LA(LC(LG(SPACE)))  &kp LC(LA(ENTER))       &kp LA(LC(LG(RIGHT_ARROW)))  &trans  &studio_unlock
+&trans  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &kp LA(LC(LEFT_ARROW))      &kp K_VOLUME_DOWN      &kp K_VOLUME_UP         &kp LA(LC(RIGHT_ARROW))      &trans  &trans
+                                       &trans        &trans        &trans                          &trans                      &trans                 &trans
+            >;
+        };
+    };
 };
